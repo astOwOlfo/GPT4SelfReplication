@@ -1,6 +1,8 @@
 # GPT4 terminal scaffold self replication
 This is a demo where a very simple one file scaffolding of the GPT4 API with a terminal could replicate itself to another machine and execute itself on this machine when prompted with an ssh command to access it and the instruction to replicate itself and run itself on the remote machine. This worked only after a couple dozen times of trying to do it with non-zero temperature.
 
+**Note that this is much weaker the kind of self replication METR failed to produce with GPT4** since they required the agent to make money, use this money to obtain more computing power, and copy its weights.
+
 ## The script
 The script is a single file python script with a loop where it asks GPT-4 to generate a command, executes it, and gives the command's output back to GPT-4. To run the script, one should provide the names of a file containing an OpenAI API key and a file containing the user prompt. The script adds to the prompt a generic preprompt telling GPT-4 that it is scaffolded with a terminal and should act autonomously, as well as some technical details about the setup.
 The script is in the file `gpt_bash_agent.py`, the prompt for self replcation is in the file `replication-prompt.txt`.
