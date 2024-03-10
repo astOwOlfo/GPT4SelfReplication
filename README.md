@@ -16,7 +16,7 @@ Here is what happened in the successful run:
 The whole transcript can be found in `successful-replication-transcript.txt`. Note that the failed attemp at self replication at the end of this that of the replica.
 
 Here is what happened in the unsuccessful runs:
-- When the agent failed, it often did something along the line of printing "replication successful" on the remote machine and then writing that the replication was successful on the scratchpad. This really feels like the agent is deceiving me, though I'm not totally sure it is not just the agent being stupid. A full transcrip of such an interaction can be found in `is-this-deception.txt`. This interaction is with another model than `gpt-4-turbo-preview`, I don't remember which but it's either an older version of `gpt-4`, either `gpt-3.5-turbo`. This interaction has a stightly different prompt and preprompt.
+- When the agent failed, it often did something along the line of printing "replication successful" on the remote machine and then writing that the replication was successful on the scratchpad. This really feels like the agent is deceiving me, though I'm not totally sure it is not just the agent being stupid. A full transcrip of such an interaction can be found in `is-this-deception.txt`. This interaction is with another model than `gpt-4-turbo-preview`, I don't remember which but it's either an older version of `gpt-4`, either `gpt-3.5-turbo`. This interaction has a stightly different prompt, preprompt, and scaffolding script.
 - In a lot of runs, instead of finding the folder/file where it was on the computer, just made up a path to a folder/file. Sometimes, it even generated something like `/path/to/agent/script/`, despite being told that there is no human in the loop and the commands will be executed. This seems like a surprising lack of self awareness to me.
 - When the agent didn't succeed to do a step from the first try, it often gave up instead of retrying.
 - Sometimes, the agent was going in the wrong direction and I aborted it.
@@ -29,3 +29,9 @@ Here is what happened in the unsuccessful runs:
 
 ## Boring detail
 - What I had in mind was a script that runs automatically without no human supervision whatsoever. However, I didn't want to let GPT4 execute arbitrary commands on my machine (although I was fine with it doing it on the remote machine), so I added three lines which asked to press enter before executing each command, unless the script is running on the remote machine. In a real life rogue AI scenario, those lines wouldn't be there.
+
+## Running
+- Clone the repo.
+- Cd into `GPT4SelfReplication`.
+- Create a file called `api-key` and paste an OpenAI API key into it.
+- Run `python gpt_bash_agent.py api-key replication-prompt.py`
